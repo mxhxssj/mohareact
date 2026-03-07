@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import Navbar from "./componentes/layout/Navbar";
-import Footer from "./componentes/layout/Footer";
+import Navbar from "./componentes/layout/navbar";
+import Footer from "./componentes/layout/footer";
 
 import Inicio from "./page/inicio";
 import Coches from "./page/coches";
 import Motos from "./page/motos";
-import SobreNosotros from "./page/SobreNosotros";
-import Contacto from "./page/Contactanos";
+import SobreNosotros from "./page/sobreNosotros";
+import Contacto from "./page/contactanos";
 import CocheDetalle from "./page/CocheDetalle";
 import MotoDetalle from "./page/MotoDetalle";
 import MisAlquileres from "./page/MisAlquileres";
