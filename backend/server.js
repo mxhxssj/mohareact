@@ -142,11 +142,11 @@ app.get("/coches", (req, res) => {
 // MANEJO DEL FRONTEND (SPA)
 // ==========================================
 // Esta ruta captura cualquier petición que no sea de la API y sirve el index.html
-app.get("/:any*", (req, res) => {
+app.get("(.*)", (req, res) => {
     res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
 // ===== INICIAR SERVIDOR =====
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor MotorHub corriendo en: http://localhost:${PORT}`);
+    console.log(` Servidor MotorHub corriendo en: http://localhost:${PORT}`);
 });
