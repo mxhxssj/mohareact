@@ -142,7 +142,7 @@ app.get("/coches", (req, res) => {
 // MANEJO DEL FRONTEND (SPA)
 // ==========================================
 // Esta ruta captura cualquier petición que no sea de la API y sirve el index.html
-app.get("(.*)", (req, res) => {
+app.get('/:path*', (req, res) => {
     res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
