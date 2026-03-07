@@ -7,35 +7,27 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const app = express();
-// IMPORTANTE: Render requiere process.env.PORT, en local usará 3001
-const PORT = process.env.PORT ;
-const SECRET_KEY = process.env.JWT_SECRET || "motorhub_secret_key";
+const PORT = process.env.PORT || 3001 ;
+const SECRET_KEY = "motorhub_secret_key";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Configuración de CORS corregida para producción
-app.use(cors({
-    origin: ["https://mohareact.onrender.com", "http://localhost:5173"],
-    methods: ["GET", "POST"],
-    credentials: true
-}));
 
+app.use(cors());
 app.use(express.json());
 
-// Servir el frontend (Vite/React)
 app.use(express.static(path.join(__dirname, "../dist")));
 
-// API Test
+
+
 app.get("/api/test", (req, res) => {
     res.send("API MotorHub funcionando");
 });
 
-// Test de DB con log de error detallado
 app.get("/test-db", (req, res) => {
     db.query("SELECT 1", (err) => {
         if (err) {
-            console.error("Error de conexión DB:", err);
             return res.status(500).json("Error en la base de datos");
         }
         res.json("Base de datos conectada correctamente");
@@ -52,7 +44,7 @@ app.post("/register", async (req, res) => {
         const sql = "INSERT INTO user (nombre, email, password) VALUES (?, ?, ?)";
         db.query(sql, [nombre, email, hashedPassword], (err) => {
             if (err) {
-                console.error("Error al registrar:", err);
+                console.log(err);
                 return res.status(500).json("El usuario ya existe o error en BD");
             }
             res.status(201).json("Usuario registrado correctamente");
@@ -115,8 +107,8 @@ app.get("/mis-alquileres", (req, res) => {
         const sql = `
             SELECT a.*, c.nombre AS coche_nombre, c.imagen AS coche_imagen, m.nombre AS moto_nombre, m.imagen AS moto_imagen
             FROM alquileres a
-                     LEFT JOIN coches c ON a.vehiculo_id = c.id
-                     LEFT JOIN motos m ON a.vehiculo_id = m.id
+            LEFT JOIN coches c ON a.vehiculo_id = c.id
+            LEFT JOIN motos m ON a.vehiculo_id = m.id
             WHERE a.user_id = ?`;
 
         db.query(sql, [decoded.id], (err, result) => {
@@ -130,29 +122,24 @@ app.get("/mis-alquileres", (req, res) => {
 
 app.get("/motos", (req, res) => {
     db.query("SELECT * FROM motos", (err, results) => {
-        if (err) {
-            console.error("Error obteniendo motos:", err);
-            return res.status(500).json({ error: "Error obteniendo motos" });
-        }
+        if (err) return res.status(500).json({ error: "Error obteniendo motos" });
         res.json(results);
     });
 });
 
 app.get("/coches", (req, res) => {
     db.query("SELECT * FROM coches", (err, results) => {
-        if (err) {
-            console.error("Error obteniendo coches:", err);
-            return res.status(500).json({ error: "Error obteniendo coches" });
-        }
+        if (err) return res.status(500).json({ error: "Error obteniendo coches" });
         res.json(results);
     });
 });
 
-// Esta ruta debe ir después de todas las rutas de la API
-app.get('*', (req, res) => {
+
+app.get('/:path*', (req, res) => {
     res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
+
 app.listen(PORT, () => {
-    console.log(`Servidor MotorHub escuchando en puerto ${PORT}`);
+    console.log(` Servidor MotorHub corriendo en: http://localhost:${PORT}`);
 });
