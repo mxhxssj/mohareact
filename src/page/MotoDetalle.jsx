@@ -1,4 +1,4 @@
-import "./motoDetalle.css";
+import "./MotoDetalle.css";
 
 export default function MotoDetalle({ moto, setPage }) {
 
