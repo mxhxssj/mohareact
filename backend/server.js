@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, "../dist")));
 // =========================
 
 app.get("/api/test", (req, res) => {
-    res.send("🚀 API MotorHub funcionando");
+    res.send("API MotorHub funcionando");
 });
 
 app.get("/test-db", (req, res) => {
@@ -74,7 +74,7 @@ app.post("/login", (req, res) => {
             SECRET_KEY,
             { expiresIn: "2h" }
         );
-        res.json({ message: "Login correcto ✅", token });
+        res.json({ message: "Login correcto ", token });
     });
 });
 
@@ -142,7 +142,7 @@ app.get("/coches", (req, res) => {
 // MANEJO DEL FRONTEND (SPA)
 // ==========================================
 // Esta ruta captura cualquier petición que no sea de la API y sirve el index.html
-app.get("*", (req, res) => {
+app.get("/:any*", (req, res) => {
     res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
