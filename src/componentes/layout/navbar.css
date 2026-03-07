@@ -1,4 +1,4 @@
-/* RESET GENERAL */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body {
 }
 
 
-/* NAVBAR */
+
 
 .navbar {
     display: flex;
@@ -26,7 +26,6 @@ body {
 }
 
 
-/* LOGO */
 
 .navbar-logo {
     font-size: 20px;
@@ -39,11 +38,10 @@ body {
 }
 
 
-/* MENU MOVIL */
 
 .navbar-menu {
     position: absolute;
-    top: 100%;          /* sale justo debajo del navbar */
+    top: 100%;
     left: 0;
     width: 100%;
     background: #0c0c12;
@@ -63,7 +61,7 @@ body {
 }
 
 
-/* BOTONES NAV */
+
 
 .nav-btn {
     background: transparent;
@@ -88,7 +86,7 @@ body {
 }
 
 
-/* HAMBURGER */
+
 
 .hamburger {
     display: flex;
@@ -106,7 +104,6 @@ body {
 }
 
 
-/* TABLET */
 
 @media (min-width: 768px) {
 
@@ -121,7 +118,6 @@ body {
 }
 
 
-/* DESKTOP */
 
 @media (min-width: 1024px) {
 
@@ -151,7 +147,6 @@ body {
 }
 
 
-/* PANTALLAS MUY GRANDES */
 
 @media (min-width: 1400px) {
 

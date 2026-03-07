@@ -13,7 +13,6 @@ export default function CocheCard({ coche }) {
 
     const [fechasOcupadas, setFechasOcupadas] = useState([]);
 
-    // 🔥 Cargar fechas ocupadas SOLO cuando se abre el modal
     useEffect(() => {
         if (!open) return;
 
@@ -33,7 +32,6 @@ export default function CocheCard({ coche }) {
         fetchFechas();
     }, [open, coche.id]);
 
-    // 🔥 Convertir rangos en fechas individuales bloqueadas
     const fechasBloqueadas = () => {
         let fechas = [];
 
@@ -53,7 +51,6 @@ export default function CocheCard({ coche }) {
         return fechas;
     };
 
-    // 🔥 Calcular días
     const calcularDias = () => {
         if (!fechaInicio || !fechaFin) return 0;
 
@@ -65,7 +62,6 @@ export default function CocheCard({ coche }) {
 
     const total = calcularDias() * coche.precio;
 
-    // 🔥 Enviar alquiler
     const handleAlquiler = async () => {
         const token = localStorage.getItem("token");
 
@@ -102,7 +98,7 @@ export default function CocheCard({ coche }) {
                 return;
             }
 
-            alert("Vehículo alquilado correctamente 🚗");
+            alert("Vehículo alquilado correctamente ");
 
             // Reset
             setFechaInicio(null);

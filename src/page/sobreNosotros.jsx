@@ -4,7 +4,6 @@ export default function SobreNosotros() {
     return (
         <div className="sobre-container">
 
-            {/* HERO */}
             <section className="sobre-hero">
                 <h1>Pasión por el Motor</h1>
                 <p>
@@ -13,7 +12,6 @@ export default function SobreNosotros() {
                 </p>
             </section>
 
-            {/* SECCION 1 */}
             <section className="sobre-section">
                 <img src="../../public/garage.jpg" alt="coches deportivos" />
 

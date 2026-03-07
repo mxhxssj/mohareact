@@ -20,7 +20,6 @@ export default function App() {
     const [motoSeleccionada, setMotoSeleccionada] = useState(null);
     const [isLogged, setIsLogged] = useState(false);
 
-    // Detectar token al cargar
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
@@ -28,7 +27,6 @@ export default function App() {
         }
     }, []);
 
-    // Función logout
     const handleLogout = () => {
         localStorage.removeItem("token");
         setIsLogged(false);

@@ -4,7 +4,6 @@ export default function Inicio() {
     return (
         <div className="inicio">
 
-            {/* HERO */}
             <section className="inicio-hero">
                 <div className="hero-content">
                     <h1>Motor<span>Hub</span></h1>
@@ -20,7 +19,6 @@ export default function Inicio() {
                 </div>
             </section>
 
-            {/* FEATURES */}
             <section className="inicio-features">
 
                 <div className="feature">
@@ -49,7 +47,6 @@ export default function Inicio() {
 
             </section>
 
-            {/* GRID DE SECCIONES */}
             <section className="inicio-grid">
 
                 <div className="inicio-card">
@@ -78,7 +75,6 @@ export default function Inicio() {
 
             </section>
 
-            {/* DESTACADO */}
             <section className="inicio-highlight">
                 <div className="highlight-text">
                     <h2>Datos reales, vista clara</h2>
@@ -100,7 +96,6 @@ export default function Inicio() {
                 </div>
             </section>
 
-            {/* STATS */}
             <section className="inicio-stats">
 
                 <div className="inicio-stat">

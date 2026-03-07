@@ -100,7 +100,7 @@ export default function MotoCard({ moto }) {
                 return;
             }
 
-            alert("Moto alquilada correctamente 🏍️");
+            alert("Moto alquilada correctamente 🏍");
 
             setFechaInicio(null);
             setFechaFin(null);
