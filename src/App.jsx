@@ -11,8 +11,8 @@ import CocheDetalle from "./page/CocheDetalle";
 import MotoDetalle from "./page/MotoDetalle";
 import MisAlquileres from "./page/MisAlquileres";
 
-import Login from "./page/Login";
-import Register from "./page/Register";
+import Login from "./page/login";
+import Register from "./page/register";
 
 export default function App() {
     const [page, setPage] = useState("inicio");
