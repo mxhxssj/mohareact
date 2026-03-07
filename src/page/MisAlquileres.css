@@ -1,0 +1,49 @@
+.mis-alquileres-container {
+    padding: 60px;
+    background: #111;
+    min-height: 100vh;
+    color: white;
+}
+
+.mis-alquileres-container h2 {
+    margin-bottom: 40px;
+    font-size: 32px;
+}
+
+.alquiler-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.alquiler-card {
+    background: #1c1c1c;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.alquiler-card:hover {
+    transform: translateY(-5px);
+}
+
+.alquiler-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.alquiler-info {
+    padding: 20px;
+}
+
+.alquiler-info h3 {
+    margin-bottom: 10px;
+}
+
+.precio-total {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #00ff88;
+    font-weight: bold;
+}

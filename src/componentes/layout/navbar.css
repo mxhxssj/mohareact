@@ -1,0 +1,162 @@
+/* RESET GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: #0c0c12;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+/* LOGO */
+
+.navbar-logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar-logo span {
+    color: #ff3b3b;
+}
+
+
+/* MENU MOVIL */
+
+.navbar-menu {
+    position: absolute;
+    top: 100%;          /* sale justo debajo del navbar */
+    left: 0;
+    width: 100%;
+    background: #0c0c12;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 20px;
+
+    transform: translateY(-200%);
+    transition: transform .3s ease;
+}
+
+.navbar-menu.active {
+    transform: translateY(0);
+}
+
+
+/* BOTONES NAV */
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: #ddd;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: 0.2s;
+    text-align: left;
+}
+
+.nav-btn:hover {
+    background: #1c1c26;
+    color: white;
+}
+
+.nav-btn.active {
+    background: #ff3b3b;
+    color: white;
+}
+
+
+/* HAMBURGER */
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+
+/* TABLET */
+
+@media (min-width: 768px) {
+
+    .navbar {
+        padding: 18px 40px;
+    }
+
+    .navbar-logo {
+        font-size: 22px;
+    }
+
+}
+
+
+/* DESKTOP */
+
+@media (min-width: 1024px) {
+
+    .navbar {
+        padding: 18px 80px;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    .navbar-menu {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        width: auto;
+        padding: 0;
+        gap: 18px;
+        background: transparent;
+    }
+
+    .nav-btn {
+        text-align: center;
+        font-size: 15px;
+    }
+
+}
+
+
+/* PANTALLAS MUY GRANDES */
+
+@media (min-width: 1400px) {
+
+    .navbar {
+        padding: 18px 140px;
+    }
+
+}

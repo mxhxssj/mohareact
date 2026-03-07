@@ -1,0 +1,74 @@
+.sobre-container {
+    background: #0b0f19;
+    color: white;
+}
+
+.sobre-hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.8)),
+    url("../../public/motor.jpg") center/cover;
+}
+
+.sobre-hero h1 {
+    font-size: 48px;
+}
+
+
+
+.sobre-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 70px;
+    align-items: center;
+}
+
+.sobre-section.reverse {
+    direction: rtl;
+}
+
+.sobre-section.reverse .sobre-text {
+    direction: ltr;
+}
+
+.sobre-section img {
+    width: 100%;
+    border-radius: 16px;
+}
+
+
+
+.sobre-text h2 {
+    margin-bottom: 15px;
+    color: #ef4444;
+}
+
+.sobre-text p {
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
+
+
+
+.sobre-highlight {
+    padding: 80px;
+    background: #111827;
+    text-align: center;
+}
+
+.sobre-highlight h2 {
+    color: #ef4444;
+    margin-bottom: 20px;
+}
+
+
+
+.sobre-cta {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.sobre-cta h2 {
+    color: #ef4444;
+}

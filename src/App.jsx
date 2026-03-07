@@ -1,0 +1,85 @@
+import { useState, useEffect } from "react";
+import Navbar from "./componentes/layout/Navbar";
+import Footer from "./componentes/layout/Footer";
+
+import Inicio from "./page/inicio";
+import Coches from "./page/coches";
+import Motos from "./page/motos";
+import SobreNosotros from "./page/SobreNosotros";
+import Contacto from "./page/Contactanos";
+import CocheDetalle from "./page/CocheDetalle";
+import MotoDetalle from "./page/MotoDetalle";
+import MisAlquileres from "./page/MisAlquileres";
+
+import Login from "./page/Login";
+import Register from "./page/Register";
+
+export default function App() {
+    const [page, setPage] = useState("inicio");
+    const [cocheSeleccionado, setCocheSeleccionado] = useState(null);
+    const [motoSeleccionada, setMotoSeleccionada] = useState(null);
+    const [isLogged, setIsLogged] = useState(false);
+
+    // Detectar token al cargar
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            setIsLogged(true);
+        }
+    }, []);
+
+    // Función logout
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        setIsLogged(false);
+        setPage("inicio");
+    };
+
+    return (
+        <div>
+            <Navbar
+                setPage={setPage}
+                isLogged={isLogged}
+                handleLogout={handleLogout}
+            />
+
+            {page === "inicio" && <Inicio />}
+
+            {!isLogged && page === "login" && (
+                <Login setPage={setPage} setIsLogged={setIsLogged} />
+            )}
+
+            {!isLogged && page === "register" && (
+                <Register setPage={setPage} />
+            )}
+
+            {isLogged && page === "coches" && (
+                <Coches
+                    setPage={setPage}
+                    setCocheSeleccionado={setCocheSeleccionado}
+                />
+            )}
+
+            {isLogged && page === "motos" && (
+                <Motos
+                    setPage={setPage}
+                    setMotoSeleccionada={setMotoSeleccionada}
+                />
+            )}
+
+            {isLogged && page === "sobre" && <SobreNosotros />}
+            {isLogged && page === "contacto" && <Contacto />}
+            {isLogged && page === "mis-alquileres" && <MisAlquileres />}
+
+            {isLogged && page === "cocheDetalle" && (
+                <CocheDetalle coche={cocheSeleccionado} />
+            )}
+
+            {isLogged && page === "motoDetalle" && (
+                <MotoDetalle moto={motoSeleccionada} />
+            )}
+
+            <Footer />
+        </div>
+    );
+}
