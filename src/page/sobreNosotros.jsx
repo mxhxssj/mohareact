@@ -38,7 +38,6 @@ export default function SobreNosotros() {
                 </div>
             </section>
 
-            {/* SECCION 2 */}
             <section className="sobre-section reverse">
                 <img src="../../public/motos1.jpg" alt="motos deportivas" />
 
@@ -63,7 +62,6 @@ export default function SobreNosotros() {
                 </div>
             </section>
 
-            {/* SECCION 3 */}
             <section className="sobre-highlight">
                 <h2>Rendimiento e ingeniería</h2>
 

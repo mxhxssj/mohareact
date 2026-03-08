@@ -9,7 +9,7 @@ export default function Motos({ setPage, setMotoSeleccionada }) {
     const [marca, setMarca] = useState("todas");
 
     useEffect(() => {
-        fetch("http://localhost:3001/motos")
+        fetch("/motos")
             .then(res => res.json())
             .then(data => setMotos(data))
             .catch(err => console.error("Error cargando motos:", err));

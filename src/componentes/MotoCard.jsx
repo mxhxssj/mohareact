@@ -20,7 +20,7 @@ export default function MotoCard({ moto }) {
         const fetchFechas = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:3001/fechas-ocupadas/${moto.id}`
+                    `/fechas-ocupadas/${moto.id}`
                 );
 
                 const data = await response.json();
@@ -78,7 +78,7 @@ export default function MotoCard({ moto }) {
         }
 
         try {
-            const response = await fetch("http://localhost:3001/alquilar", {
+            const response = await fetch("/alquilar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -100,7 +100,7 @@ export default function MotoCard({ moto }) {
                 return;
             }
 
-            alert("Moto alquilada correctamente 🏍");
+            alert("Moto alquilada correctamente ");
 
             setFechaInicio(null);
             setFechaFin(null);
@@ -134,7 +134,7 @@ export default function MotoCard({ moto }) {
                 <div className="modal-car">
 
                     <img
-                        src={moto.img}
+                        src={moto.imagen}
                         alt={moto.nombre}
                         className="modal-car-img"
                     />

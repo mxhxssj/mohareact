@@ -11,7 +11,7 @@ export default function Register({ setPage }) {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:3001/register", {
+            const response = await fetch("/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

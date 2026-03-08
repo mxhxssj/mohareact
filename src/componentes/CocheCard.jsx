@@ -19,7 +19,7 @@ export default function CocheCard({ coche }) {
         const fetchFechas = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:3001/fechas-ocupadas/${coche.id}`
+                    `/fechas-ocupadas/${coche.id}`
                 );
 
                 const data = await response.json();
@@ -76,7 +76,7 @@ export default function CocheCard({ coche }) {
         }
 
         try {
-            const response = await fetch("http://localhost:3001/alquilar", {
+            const response = await fetch("/alquilar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -133,7 +133,7 @@ export default function CocheCard({ coche }) {
                 <div className="modal-car">
 
                     <img
-                        src={coche.img}
+                        src={coche.imagen}
                         alt={coche.nombre}
                         className="modal-car-img"
                     />
