@@ -13,7 +13,7 @@ export default function MisAlquileres() {
 
             try {
 
-                const response = await fetch("http://localhost:3001/mis-alquileres", {
+                const response = await fetch("/mis-alquileres", {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
