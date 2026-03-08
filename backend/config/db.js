@@ -15,7 +15,6 @@ const dbUri = process.env.CONEXION;
 const db = mysql.createPool({
     uri: dbUri,
     waitForConnections: true,
-    connectionLimit: 3,
     queueLimit: 0,
     enableKeepAlive: true, // Mantiene la conexión activa para evitar el ECONNRESET
     keepAliveInitialDelay: 10000
@@ -25,11 +24,15 @@ const db = mysql.createPool({
 // Pero podemos verificar la conexión así:
 db.getConnection((err, connection) => {
     if (err) {
-        console.error(" Error de conexión con el Pool:", err.message);
+        console.error("Error de conexión con el Pool:", err.message);
         return;
     }
-    console.log(" Conectado a MySQL (Filess.io) mediante Pool correctamente");
-    connection.release(); // Importante: devolvemos la conexión al pool
+
+    connection.query("SELECT 1 + 1 AS resultado", (err, results) => {
+        connection.release();
+        if (err) console.error(err.message);
+        else console.log("Resultado:", results[0].resultado);
+    });
 });
 
 export default db;

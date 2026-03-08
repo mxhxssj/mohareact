@@ -9,7 +9,7 @@ export default function Coches({ setPage, setCocheSeleccionado }) {
     const [marca, setMarca] = useState("todas");
 
     useEffect(() => {
-        fetch("http://localhost:3001/coches")
+        fetch("/coches")
             .then(res => res.json())
             .then(data => setCoches(data))
             .catch(err => console.error("Error cargando coches:", err));
