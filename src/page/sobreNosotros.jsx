@@ -84,7 +84,7 @@ export default function SobreNosotros() {
 
             {/* SECCION 4 */}
             <section className="sobre-section">
-                <img src="../../public/circuito.jpg" alt="circuito" />
+                <img src="/../../public/circuito.jpg" alt="circuito" />
 
                 <div className="sobre-text">
                     <h2>Cultura y competición</h2>
