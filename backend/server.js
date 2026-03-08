@@ -58,7 +58,10 @@ app.post("/login", (req, res) => {
     const { email, password } = req.body;
     const sql = "SELECT * FROM user WHERE email = ?";
     db.query(sql, [email], async (err, result) => {
-        if (err) return res.status(500).json("Error del servidor");
+        if (err) {
+            console.error("Error en DB durante login:", err.message); // Esto te dirá el error real en la terminal
+            return res.status(500).json("Error de conexión con la base de datos");
+        }
         if (result.length === 0) return res.status(404).json("Usuario no encontrado");
 
         const user = result[0];
