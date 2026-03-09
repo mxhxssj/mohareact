@@ -41,8 +41,8 @@ export default function MisAlquileres() {
 
                 {alquileres.map(a => {
 
-                    const nombre = a.coche_nombre || a.moto_nombre;
-                    const imagen = a.coche_imagen || a.moto_imagen;
+                    const nombre = a.vehiculo_nombre;
+                    const imagen = a.vehiculo_imagen;
 
                     return (
                         <div key={a.id} className="alquiler-card">
