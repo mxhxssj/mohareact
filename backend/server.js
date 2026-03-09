@@ -108,11 +108,23 @@ app.get("/mis-alquileres", (req, res) => {
     try {
         const decoded = jwt.verify(token, SECRET_KEY);
         const sql = `
-            SELECT a.*, c.nombre AS coche_nombre, c.imagen AS coche_imagen, m.nombre AS moto_nombre, m.imagen AS moto_imagen
+            SELECT
+                a.*,
+                CASE
+                    WHEN a.tipo = 'coche' THEN c.nombre
+                    WHEN a.tipo = 'moto' THEN m.nombre
+                    END AS vehiculo_nombre,
+
+                CASE
+                    WHEN a.tipo = 'coche' THEN c.imagen
+                    WHEN a.tipo = 'moto' THEN m.imagen
+                    END AS vehiculo_imagen
+
             FROM alquileres a
-            LEFT JOIN coches c ON a.vehiculo_id = c.id
-            LEFT JOIN motos m ON a.vehiculo_id = m.id
-            WHERE a.user_id = ?`;
+                     LEFT JOIN coches c ON a.vehiculo_id = c.id AND a.tipo = 'coche'
+                     LEFT JOIN motos m ON a.vehiculo_id = m.id AND a.tipo = 'moto'
+            WHERE a.user_id = ?
+        `;
 
         db.query(sql, [decoded.id], (err, result) => {
             if (err) return res.status(500).json("Error al obtener alquileres");
