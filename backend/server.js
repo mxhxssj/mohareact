@@ -59,7 +59,7 @@ app.post("/login", (req, res) => {
     const sql = "SELECT * FROM user WHERE email = ?";
     db.query(sql, [email], async (err, result) => {
         if (err) {
-            console.error("Error en DB durante login:", err.message); // Esto te dirá el error real en la terminal
+            console.error("Error en DB durante login:", err.message);
             return res.status(500).json("Error de conexión con la base de datos");
         }
         if (result.length === 0) return res.status(404).json("Usuario no encontrado");
@@ -149,6 +149,29 @@ app.get("/coches", (req, res) => {
     });
 });
 
+
+app.get("/fechas-ocupadas/:vehiculo_id", (req, res) => {
+
+    const vehiculo_id = req.params.vehiculo_id;
+
+    const sql = `
+        SELECT fecha_inicio, fecha_fin
+        FROM alquileres
+        WHERE vehiculo_id = ?
+    `;
+
+    db.query(sql, [vehiculo_id], (err, result) => {
+
+        if (err) {
+            console.log(err);
+            return res.status(500).json("Error cargando fechas ocupadas");
+        }
+
+        res.json(result);
+
+    });
+
+});
 
 app.get('/:path*', (req, res) => {
     res.sendFile(path.join(__dirname, "../dist/index.html"));
